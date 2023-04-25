@@ -1,4 +1,4 @@
-FROM php:8.0.11-fpm-alpine3.13
+FROM php:8.2-alpine3.16
 
 MAINTAINER Yurij Karpov <acrossoffwest@gmail.com>
 
