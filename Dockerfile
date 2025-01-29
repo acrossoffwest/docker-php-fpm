@@ -27,6 +27,9 @@ RUN install-php-extensions pdo pdo_pgsql pgsql pdo_mysql mysqli
 # Image
 RUN install-php-extensions imagick gd exif
 
+# swoole
+RUN install-php-extensions pcntl swoole http
+
 # Other
 RUN install-php-extensions zip opcache xmlreader redis
 
@@ -49,6 +52,34 @@ COPY ./cron.d /etc/cron.d
 RUN apk add supervisor && \
   mkdir -p /var/log/supervisor && \
   mkdir -p /etc/supervisor
+
+# install mysql and image libraries
+RUN apk --no-cache update \
+    && apk --no-cache upgrade \
+    && apk add --no-cache \
+            mysql-client \
+            freetype \
+            libpng \
+            freetype-dev \
+            libpng-dev \
+            jpeg-dev \
+            libjpeg \
+            libjpeg-turbo-dev \
+            wget \
+            zlib-dev \
+            ttf-freefont \
+            fontconfig \
+            xvfb \
+            libxrender-dev \
+            gettext \
+            gettext-dev \
+            libxml2-dev \
+            gnu-libiconv-dev \
+            autoconf \
+            g++ \
+            git \
+            bash \
+            icu-dev
 
 COPY ./supervisor /etc/supervisor
 
