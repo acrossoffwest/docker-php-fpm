@@ -28,7 +28,7 @@ RUN install-php-extensions pdo pdo_pgsql pgsql pdo_mysql mysqli
 RUN install-php-extensions imagick gd exif
 
 # swoole
-RUN install-php-extensions pcntl swoole http
+RUN install-php-extensions pcntl swoole
 
 # Other
 RUN install-php-extensions zip opcache xmlreader redis
