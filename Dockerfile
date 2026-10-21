@@ -25,10 +25,13 @@ RUN apk add git dcron nano bash libzip-dev unzip g++
 RUN install-php-extensions pdo pdo_pgsql pgsql pdo_mysql mysqli
 
 # Image
-RUN install-php-extensions imagick gd exif
+RUN install-php-extensions Imagick/imagick@3.8.1 gd exif
 
 # Other
-RUN install-php-extensions zip opcache xmlreader redis
+RUN install-php-extensions zip opcache xmlreader
+RUN git clone --depth 1 --branch 6.3.0 --recurse-submodules https://github.com/phpredis/phpredis /tmp/phpredis \
+ && install-php-extensions /tmp/phpredis \
+ && rm -rf /tmp/phpredis
 
 # Composer
 
